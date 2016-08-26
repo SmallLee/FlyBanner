@@ -77,7 +77,54 @@ public class FlyItem extends BannerItem{
                 .setSource(mList)//图片的数据集合
                         .startScroll();//开启轮播
 ```
+#部分方法介绍
+```Java
+ /**
+     * 设置指示器距离四周的距离
+     * @param leftMarging 左边距
+     * @param rightMarging 右边距
+     * @param bottomMarging 下边距
+     */
+    public FlyBanner setMargins(float leftMarging,float rightMarging,float bottomMarging){
+       .....
+    }
 
+```
+
+```Java
+ /**
+     * 设置指示器的样式
+     * @param drawableId 指示器资源
+     * @param radius 指示器半径
+     * @param spacing 指示器之间的间距
+     * @param gravity 指示器位置
+     * @return
+     */
+    public FlyBanner setIndicator(int drawableId,int radius,int spacing,int gravity){
+      ......
+    }
+
+```
+##关于指示器的样式定义
+
+这里我们规定指示器的样式只能用选择器来实现，使用时，使用下面的文件来定义选择器样式
+
+```Java
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+<!--选中样式-->
+    <item android:state_checked="true" android:drawable="@drawable/iv_selected"/>
+    <!--未选中样式-->
+    <item android:state_checked="false" android:drawable="@drawable/iv_unselected"/>
+</selector>
+```
+只需要定义不同的样式文件，然后添加到这个选择器里就可以。
+
+
+
+
+
+#使用过程中，如果发现任何问题，可以向我提出，我会尽快解决
 
 
 
