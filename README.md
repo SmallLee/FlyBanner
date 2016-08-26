@@ -5,3 +5,7 @@
 默认样式
 
 ![image](https://github.com/SmallLee/FlyBanner/blob/master/default.gif)
+
+修改后的样式
+
+
