@@ -77,7 +77,7 @@ public class FlyItem extends BannerItem{
                 .setSource(mList)//图片的数据集合
                         .startScroll();//开启轮播
 ```
-#部分方法介绍
+##部分方法介绍
 ```Java
  /**
      * 设置指示器距离四周的距离
@@ -124,7 +124,7 @@ public class FlyItem extends BannerItem{
 
 
 
-#使用过程中，如果发现任何问题，可以向我提出，我会尽快解决
+##使用过程中，如果发现任何问题，可以向我提出，我会尽快解决
 
 
 
