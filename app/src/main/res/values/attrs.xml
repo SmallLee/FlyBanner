@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="FlyBanner">
+        <!--起始延迟时间-->
+        <attr name="delayTime" format="float"/>
+        <!--轮播间隔时间-->
+        <attr name="intervalTime" format="float"/>
+        <!--触摸时是否停止轮播-->
+        <attr name="stopWhenTouch" format="boolean"/>
+        <!--首次进来时是否可以左滑-->
+        <attr name="leftScroll" format="boolean"/>
+    </declare-styleable>
+</resources>
