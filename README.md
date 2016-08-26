@@ -118,8 +118,16 @@ public class FlyItem extends BannerItem{
     <item android:state_checked="false" android:drawable="@drawable/iv_unselected"/>
 </selector>
 ```
-只需要定义不同的样式文件，然后添加到这个选择器里就可以。
+只需要定义不同的样式文件，然后添加到这个选择器里就可以。例如其中选中指示器的样式代码如下
 
+```Java
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="oval">
+    <!--选中为蓝色-->
+    <solid android:color="@android:color/holo_blue_light"/>
+</shape>
+```
 
 
 
