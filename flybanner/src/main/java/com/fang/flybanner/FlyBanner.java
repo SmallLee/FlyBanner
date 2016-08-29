@@ -8,7 +8,7 @@ import android.os.Message;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
-import android.view.Gravity;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,6 +30,7 @@ import java.util.TimerTask;
  */
 public class FlyBanner extends RelativeLayout {
     private static final String TAG = "FlyBanner";
+    private static final int MSG_FLY = 0X11;
     /**默认延迟时间*/
     public static final long DEFAULT_DELAYTIME = 2;
     /**默认轮播间隔时间*/
@@ -41,7 +42,7 @@ public class FlyBanner extends RelativeLayout {
     /**默认圆点指示器样式*/
     public static final int DEFAULT_DRAWABLE_ID = R.drawable.rb_selector;
     /**默认圆点指示器位置*/
-    public static final int DEFAULT_INDICATOR_GRAVITY = Gravity.CENTER_HORIZONTAL;
+    public static final int DEFAULT_INDICATOR_GRAVITY = RelativeLayout.CENTER_HORIZONTAL;
     /*默认圆点指示器半径*/
     public static final float DEFAULT_INDICATOR_RADIUS = 20;
     /**默认指示器距离左边距离*/
@@ -75,7 +76,6 @@ public class FlyBanner extends RelativeLayout {
     private float mRightMaring = DEFAULT_INDICATOR_MARGIN_RIGHT;
     private float mBottomMaring = DEFAULT_INDICATOR_MARGIN_BOTTOM;
     private float mIndicatorSpacing = DEFAULT_INDICATOR_SPACING;
-    
     public onBannerItemClickListener mListener;
 
     public interface onBannerItemClickListener{
@@ -85,6 +85,7 @@ public class FlyBanner extends RelativeLayout {
     public void setOnBannerItemClickListener(onBannerItemClickListener listener){
         this.mListener = listener;
     }
+
 
     public  static class BannerHandler extends Handler {
         //弱引用防止Handler泄漏
@@ -248,7 +249,7 @@ public class FlyBanner extends RelativeLayout {
             @Override
             public void run() {
                 if(mIsContinue){
-                    mHandler.obtainMessage().sendToTarget();
+                    mHandler.obtainMessage(MSG_FLY).sendToTarget();
                 }
             }//mDelayTime不能<=0,否则会报非法参数异常
         },mDelayTime*1000,mIntervalTime*1000);
@@ -295,7 +296,7 @@ public class FlyBanner extends RelativeLayout {
                     .into(imageView);
             container.addView(imageView);
             mViews.add(imageView);
-             final int finalPosition = position;
+            final int finalPosition = position;
             imageView.setOnClickListener(new OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -345,6 +346,8 @@ public class FlyBanner extends RelativeLayout {
         }
         @Override
         public void onPageSelected(int position) {
+            Log.d(TAG, "onPageSelected: "+position);
+            Log.d(TAG, "onPageSelected: "+mBannerItems.size());
             mIndex = position;
             setCurrentIndicator(position%mBannerItems.size());
         }
@@ -362,7 +365,8 @@ public class FlyBanner extends RelativeLayout {
             preIndex = position;//当前位置变为上一个，继续下次轮播
         }
     }
- /**
+
+    /**
      * 当view被移除或者view所在的activity退出的时候，会调用
      */
     @Override
@@ -374,5 +378,4 @@ public class FlyBanner extends RelativeLayout {
         // 因为mIndex是静态的，当view移除的时候mIndex并不会销毁
         mIndex = 0;
     }
-
 }
