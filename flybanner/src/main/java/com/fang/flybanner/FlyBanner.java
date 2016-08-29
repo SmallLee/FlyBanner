@@ -346,8 +346,6 @@ public class FlyBanner extends RelativeLayout {
         }
         @Override
         public void onPageSelected(int position) {
-            Log.d(TAG, "onPageSelected: "+position);
-            Log.d(TAG, "onPageSelected: "+mBannerItems.size());
             mIndex = position;
             setCurrentIndicator(position%mBannerItems.size());
         }
