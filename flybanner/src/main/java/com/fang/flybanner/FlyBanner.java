@@ -75,6 +75,16 @@ public class FlyBanner extends RelativeLayout {
     private float mRightMaring = DEFAULT_INDICATOR_MARGIN_RIGHT;
     private float mBottomMaring = DEFAULT_INDICATOR_MARGIN_BOTTOM;
     private float mIndicatorSpacing = DEFAULT_INDICATOR_SPACING;
+    
+    public onBannerItemClickListener mListener;
+
+    public interface onBannerItemClickListener{
+        void onItemClick(int position);
+    }
+
+    public void setOnBannerItemClickListener(onBannerItemClickListener listener){
+        this.mListener = listener;
+    }
 
     public  static class BannerHandler extends Handler {
         //弱引用防止Handler泄漏
@@ -285,6 +295,13 @@ public class FlyBanner extends RelativeLayout {
                     .into(imageView);
             container.addView(imageView);
             mViews.add(imageView);
+             final int finalPosition = position;
+            imageView.setOnClickListener(new OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    mListener.onItemClick(finalPosition);
+                }
+            });
             return imageView;
         }
 
@@ -345,6 +362,17 @@ public class FlyBanner extends RelativeLayout {
             preIndex = position;//当前位置变为上一个，继续下次轮播
         }
     }
-
+ /**
+     * 当view被移除或者view所在的activity退出的时候，会调用
+     */
+    @Override
+    protected void onDetachedFromWindow() {
+        super.onDetachedFromWindow();
+        mHandler.removeMessages(MSG_FLY);
+        bannerTimer.cancel();
+        //必须将mIndex值置为0，否则会出现进来页面轮播错误的情况，
+        // 因为mIndex是静态的，当view移除的时候mIndex并不会销毁
+        mIndex = 0;
+    }
 
 }
