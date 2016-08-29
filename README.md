@@ -77,6 +77,19 @@ public class FlyItem extends BannerItem{
                 .setSource(mList)//图片的数据集合
                         .startScroll();//开启轮播
 ```
+
+##点击监听
+
+```Java
+ flyBanner.setOnBannerItemClickListener(new FlyBanner.onBannerItemClickListener() {
+            @Override
+            public void onItemClick(int position) {
+                Toast.makeText(MainActivity.this, "第"+position+"个", Toast.LENGTH_SHORT).show();
+            }
+        });
+```
+
+
 ##部分方法介绍
 ```Java
  /**
