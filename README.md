@@ -11,8 +11,16 @@
 ![image](https://github.com/SmallLee/FlyBanner/blob/master/GIF.gif)
 
 
+#使用
 
-##使用
+##引入
+
+```Java
+dependencies {
+    compile 'com.fang:flybanner:v1.0.0'
+}
+```
+
 
 
 在布局文件中添加
@@ -34,13 +42,7 @@
 xmlns:app="http://schemas.android.com/apk/res-auto"
 ```
 
-#引入
 
-```Java
-dependencies {
-    compile 'com.fang:flybanner:v1.0.0'
-}
-```
 
 ##代码中使用
 
