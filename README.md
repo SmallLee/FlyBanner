@@ -63,6 +63,27 @@ public class FlyItem extends BannerItem{
 }
 ```
 
+加入我们的实体类的构造方法不是两个参数，比如只有一个链接地址，或者三个参数，怎么办呢？按照下面的方式写
+
+```Java
+public class FlyItem extends BannerItem {
+    public String id;
+    //一个参数
+    public FlyItem(String imageUrl){
+        super(imageUrl);
+    }
+    //二个参数
+    public FlyItem(String imageUrl, String imageDesc) {
+        super(imageUrl, imageDesc);
+    }
+    //三个参数
+    public FlyItem(String imageUrl, String imageDesc,String id){
+        super(imageUrl, imageDesc);
+        this.id = id;
+    }
+}
+```
+
 2.将获得的数据添加到集合中
 
 ```Java
