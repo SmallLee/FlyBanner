@@ -35,6 +35,14 @@
 xmlns:app="http://schemas.android.com/apk/res-auto"
 ```
 
+#引入
+
+```Java
+dependencies {
+    compile 'com.fang:flybanner:v1.0.0'
+}
+```
+
 ##代码中使用
 
 1.首先我们要写一个实体类继承BannerItem这个类
