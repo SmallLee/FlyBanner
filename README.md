@@ -70,7 +70,7 @@ public class FlyItem extends BannerItem {
     public String id;
     //一个参数
     public FlyItem(String imageUrl){
-        super(imageUrl);
+        super(imageUrl,null);
     }
     //二个参数
     public FlyItem(String imageUrl, String imageDesc) {
